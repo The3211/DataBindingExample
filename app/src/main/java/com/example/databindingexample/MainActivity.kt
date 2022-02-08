@@ -18,10 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModelFactory = ViewModelFactory(1)
         viewModel = ViewModelProvider(this,viewModelFactory).get(MainActivityViewModel::class.java)
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        viewModel.count.observe(this, Observer {
-            binding.counterText.text = it.toString()
-        })
-
     }
 }
